@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Deivery #<%= @the_deivery.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/deiveries">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_deivery/<%= @the_deivery.id %>">
+          Delete deivery
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @the_deivery.description %>
+      </dd>
+
+      <dt>
+        Details
+      </dt>
+      <dd>
+        <%= @the_deivery.details %>
+      </dd>
+
+      <dt>
+        Arrives
+      </dt>
+      <dd>
+        <%= @the_deivery.arrives %>
+      </dd>
+
+      <dt>
+        Recieved
+      </dt>
+      <dd>
+        <%= @the_deivery.recieved %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_deivery.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_deivery.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_deivery.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit deivery
+    </h2>
+
+    <form action="/modify_deivery/<%= @the_deivery.id %>"  method="post" >
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="query_description" value="<%= @the_deivery.description %>">
+      </div>
+
+      <div>
+        <label for="details_box">
+          Details
+        </label>
+
+        <input type="text" id="details_box" name="query_details" value="<%= @the_deivery.details %>">
+      </div>
+
+      <div>
+        <label for="arrives_box">
+          Arrives
+        </label>
+
+        <input type="date" id="arrives_box" name="query_arrives" value="<%= @the_deivery.arrives %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="recieved_box" name="query_recieved" value="1" <%= "checked" if @the_deivery.recieved %>>
+
+        <label for="recieved_box">
+            Recieved
+        </label>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_deivery.user_id %>">
+      </div>
+
+      <button>
+        Update deivery
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

@@ -16,6 +16,14 @@
   </head>
 
   <body>
+       <a href="/">Your todo list</a>
+  |
+  <a href="/edit_user_profile">Edit profile</a>
+  |
+  <a href="/user_sign_out">Sign out</a>
+      <p style="color: green"> <%= notice %> </p>
+
+    <p style="color: red"> <%= alert%> </p>
     <%= yield %>
   </body>
 </html>
