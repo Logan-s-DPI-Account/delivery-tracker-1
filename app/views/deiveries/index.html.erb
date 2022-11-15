@@ -62,7 +62,18 @@
    <% delivery.each do |a_delivery| %>
     <ul>
       <li><%= a_delivery.description %>
+      <% if Date.today - a_delivery.arrives >= 3 %>
+      <div class="late">
       <p>Supposed to arrive on <%= a_delivery.arrives %></p>
+      </div>
+      <% else %>
+      
+      
+      <p>Supposed to arrive on <%= a_delivery.arrives %></p>
+      
+      <%end%>
+
+
       <%= a_delivery.details %>
       <form action="/modify_deivery/<%=a_delivery.id%>" method="post">
       <input type="hidden" name="query_recieved" value="true">
@@ -81,9 +92,13 @@
     <% delivery = Deivery.where({ :recieved => true })%>
    <% delivery.each do |a_delivery| %>
    <ul>
-    <li><%=a_delivery.description %>
-     <small>Updated <%=time_ago_in_words(a_delivery.updated_at)
- %> ago <a href="/delete_deivery/<%=a_delivery.id%>">Delete</a></small>
+     <li><div><%=a_delivery.description %></div>
+    
+     <div><small>Updated <%=time_ago_in_words(a_delivery.updated_at)
+ %> ago <a href="/delete_deivery/<%=a_delivery.id %>">Delete</a>
+ </small>
+ </div>
+ </li>
    </ul>
 
    <%end%>

@@ -57,6 +57,6 @@ class DeiveriesController < ApplicationController
 
     the_deivery.destroy
 
-    redirect_to("/deiveries", { :notice => "Deivery deleted successfully."} )
+    redirect_to("/deiveries", { :notice => "Deleted."} )
   end
 end
