@@ -27,7 +27,7 @@ class DeiveriesController < ApplicationController
 
     if @the_deivery.valid?
       @the_deivery.save
-      redirect_to("/deiveries", { :notice => "Deivery created successfully." })
+      redirect_to("/deiveries", { :notice => "Added to list" })
     else
       redirect_to("/deiveries", { :alert => the_deivery.errors.full_messages.to_sentence })
     end
