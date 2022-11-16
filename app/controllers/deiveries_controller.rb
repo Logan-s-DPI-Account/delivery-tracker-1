@@ -34,28 +34,27 @@ class DeiveriesController < ApplicationController
   end
 
   def update
-    the_id = params.fetch("path_id")
-    the_deivery = Deivery.where({ :id => the_id }).at(0)
+    @the_id = params.fetch("path_id")
+    @the_deivery = Deivery.where({ :id => @the_id }).at(0)
 
-    # the_deivery.description = params.fetch("query_description")
-    # the_deivery.details = params.fetch("query_details")
-    # the_deivery.arrives = params.fetch("query_arrives")
-    the_deivery.recieved = params.fetch("query_recieved", false)
-    the_deivery.user_id = params.fetch("query_user_id")
+    # @the_deivery.description = params.fetch("query_description")
+    # @the_deivery.details = params.fetch("query_details")
+    # @the_deivery.arrives = params.fetch("query_arrives")
+    @the_deivery.recieved = params.fetch("query_recieved", false)
+    @the_deivery.user_id = params.fetch("query_user_id")
 
-    if the_deivery.valid?
-      the_deivery.save
-      redirect_to("/deiveries/", { :notice => "Deivery updated successfully."} )
+    if @the_deivery.valid?
+      @the_deivery.save
+      redirect_to("/", { :notice => "Deivery updated successfully."} )
     else
-      redirect_to("/deiveries/#{the_deivery.id}", { :alert => the_deivery.errors.full_messages.to_sentence })
+      redirect_to("/deiveries/#{@the_deivery.id}", { :alert => @the_deivery.errors.full_messages.to_sentence })
     end
   end
-
   def destroy
-    the_id = params.fetch("path_id")
-    the_deivery = Deivery.where({ :id => the_id }).at(0)
+@the_id = params.fetch("path_id")
+    @the_deivery = Deivery.where({ :id => @the_id }).at(0)
 
-    the_deivery.destroy
+    @the_deivery.destroy
 
     redirect_to("/deiveries", { :notice => "Deleted."} )
   end
